@@ -1,4 +1,4 @@
-package fr.ekito.injector;
+package fr.ekito.injector.kotlinapp;
 
 import org.junit.Test;
 

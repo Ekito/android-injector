@@ -1,10 +1,10 @@
-package fr.ekito.injector;
+package fr.ekito.injector.kotlinapp;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
 
 /**
- * <add href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</add>
+ * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
  */
 public class ApplicationTest extends ApplicationTestCase<Application> {
     public ApplicationTest() {

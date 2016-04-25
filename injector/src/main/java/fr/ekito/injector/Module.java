@@ -17,7 +17,7 @@ public abstract class Module {
      */
     public void extend(Class<? extends Module>... modules) {
         for (Class<? extends Module> m : modules) {
-            Injector.load(m);
+            Injector.load(m,false);
         }
     }
 

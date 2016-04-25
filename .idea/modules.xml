@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Injector.iml" filepath="$PROJECT_DIR$/Injector.iml" />
       <module fileurl="file://$PROJECT_DIR$/demoapp/demoapp.iml" filepath="$PROJECT_DIR$/demoapp/demoapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/injector/injector.iml" filepath="$PROJECT_DIR$/injector/injector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kotlindemoapp/kotlindemoapp.iml" filepath="$PROJECT_DIR$/kotlindemoapp/kotlindemoapp.iml" />
     </modules>
   </component>
 </project>

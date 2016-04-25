@@ -20,7 +20,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    GitHubService gitHubService = Injector.get(GitHubService.class);
+    GitHubService gitHubService = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        gitHubService = Injector.get(GitHubService.class);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         assert fab != null;
@@ -38,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 myWsCall.enqueue(new Callback<List<Repo>>() {
                     @Override
                     public void onResponse(Call<List<Repo>> call, Response<List<Repo>> response) {
-                        Snackbar.make(view, "Repo : " + response.body().size(), Snackbar.LENGTH_LONG)
+                        Snackbar.make(view, "Found Repo : " + response.body().size(), Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                     }
 
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+
     }
 
     @Override

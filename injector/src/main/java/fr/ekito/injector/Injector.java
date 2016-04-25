@@ -44,7 +44,11 @@ public class Injector {
     @Nullable
     public static <T> T getOrNull(Class<T> clazz) {
         T t = (T) instances.get(clazz);
-        Log.v(TAG, "get " + clazz.getSimpleName() + " :: " + t);
+
+        if (t != null)
+            Log.v(TAG, "getOrNull " + clazz.getSimpleName() + " :: " + t);
+        else
+            Log.v(TAG,"no instance for class:"+clazz);
         return t;
     }
 
@@ -67,6 +71,7 @@ public class Injector {
      * @param clazz
      */
     public static void add(Object o, Class clazz) {
+        Log.v(TAG, "Add/Replace instance:"+o+" class:"+clazz.getSimpleName());
         Object existingInstance = getOrNull(clazz);
         if (existingInstance != null) {
             remove(clazz);
@@ -100,6 +105,16 @@ public class Injector {
     }
 
     /**
+     * add components from Module definition
+     *
+     * @param module      Module
+     *
+     */
+    public static void load(Class<? extends Module> module) {
+        load(module,false);
+    }
+
+    /**
      * remove an instance
      *
      * @param clazz
@@ -107,6 +122,16 @@ public class Injector {
     public static void remove(Class clazz) {
         Log.v(TAG, "Remove class : " + clazz.getSimpleName());
         instances.remove(clazz);
+    }
+
+    /**
+     * remove an instance, from object's class
+     *
+     */
+    public static void remove(Object o) {
+        String simpleName = o.getClass().getSimpleName();
+        Log.v(TAG, "Remove class : " + simpleName);
+        instances.remove(simpleName);
     }
 
     /**

@@ -1,35 +1,28 @@
-package fr.ekito.injector.demoapp.di;
+package fr.ekito.injector.web;
 
 import fr.ekito.injector.Module;
-import fr.ekito.injector.demoapp.ws.GitHubService;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by arnaud on 25/04/2016.
+ * Created by arnaud on 26/04/2016.
  */
-public class MyModule extends Module {
+public class WebModule extends Module {
     @Override
     public void load() {
-        OkHttpClient httpClient = httpClient();
-
-        provide(httpClient, OkHttpClient.class);
-        provide(githubWS(httpClient), GitHubService.class);
+        provide(githubWS(), GitHubService.class);
     }
 
-    private OkHttpClient httpClient() {
+    private GitHubService githubWS() {
+
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
 
         OkHttpClient httpClient = new OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
                 .build();
-        return httpClient;
-    }
-
-    private GitHubService githubWS(OkHttpClient httpClient) {
 
         GsonConverterFactory gsonConverterFactory = GsonConverterFactory.create();
         Retrofit retrofit = new Retrofit.Builder()

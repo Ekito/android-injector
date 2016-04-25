@@ -15,6 +15,6 @@ public class MainApplication extends Application {
         super.onCreate();
 
         // load my module
-        Injector.load(MyModule.class,true);
+        Injector.load(MyModule.class);
     }
 }
