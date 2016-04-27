@@ -1,6 +1,6 @@
 #  A tiny android/java dependency injector
 
-Injector is a simple class, that help makes dependecy injection easy !
+__Injector is a simple class, that help makes dependecy injection easy !__
 
 ## Add a component
 Just declare a component in the injector to inject it later
@@ -19,7 +19,6 @@ Get your object back by asking the `Injector.get()` operator, with the given obj
 ## Make a module
 You can gather object definitions in `module`. Extends the fr.ekito.injector.Module class, implements the `load` method.<br/>
 
-<pets module>
 <br/>
 `Module.provide()` help you provides any object to the injector
  
@@ -42,17 +41,25 @@ You can reuse any existing module with the `Module.extend` operator, in your mod
 You can specify a target class when adding your object : <br/>
 > Cat felix = ... make proxy;<br/>
 > Injector.add(felix,Cat.class);<br/>
-> Cat joe = Injector.get(Cat.class)
+> Cat felix = Injector.get(Cat.class)
 
 
-# In Android ?
+# In Android
 
 ## begin at Application
 
+The best way to load module is from your `Application` component
+
+
+
 ## get it there ... 
 
-# in Kotlin ?
+Then inject your components where you want !
 
 
 
-That's it !
+# in Kotlin
+
+
+
+__That's it !__
