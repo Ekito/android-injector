@@ -16,6 +16,7 @@ public class NoModuleTest extends InjectorTest {
 
     @Test
     public void add_get_remove() throws Exception {
+
         Person joe = new Person("joe",15);
         Injector.add(joe);
         assertEquals(joe, Injector.get(Person.class));
