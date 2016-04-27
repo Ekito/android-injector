@@ -4,7 +4,8 @@ __Less Is More__
 
 Easy to use java dependecy injection, to help you quickly organize your components instances
 <br>
-Your are free to use it where you want !
+
+No annotation, not intrusive, no bullshit, just simple piece of java ... You are free to use it where you want !
 
 ## Add a component
 Just declare a component in the injector to inject it later
@@ -119,6 +120,13 @@ public class MainActivity extends AppCompatActivity {
 
 # in Kotlin
 
+You can also use it with kotlin. Beware to use java classes :  
 
+```kotlin
+// use web java module
+Injector.load(WebModule::class.java)
+val service = Injector.get(GitHubService::class.java)
+val response = service.listRepos("octocat").execute()
+```
 
 __That's it !__
