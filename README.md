@@ -1,10 +1,10 @@
-#  A tiny android/java dependency injector
+#  A tiny dependency injector
 
 __Less Is More__
 
-Injector is an easy to use dependecy injection tiny framework !<br/>
-This is just a few functions to help you quickly organize your components instances
-
+Easy to use java dependecy injection, to help you quickly organize your components instances
+<br>
+Your are free to use it where you want !
 
 ## Add a component
 Just declare a component in the injector to inject it later
@@ -81,14 +81,40 @@ Cat felix = Injector.get(Cat.class)
 
 ## begin at Application
 
-The best way to load module is from your `Application` component
+The best way to load module is from your `Application` component :
 
+```java
+public class MainApplication extends Application {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        // load my module
+        Injector.load(MyModule.class);
+    }
+}
+```
+
+But use it, where you want !
 
 
 ## get it there ... 
 
 Then inject your components where you want !
 
+```java
+public class MainActivity extends AppCompatActivity {
+
+    GitHubService gitHubService = null;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ...
+
+        gitHubService = Injector.get(GitHubService.class);
+```
 
 
 # in Kotlin
