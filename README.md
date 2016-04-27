@@ -1,8 +1,6 @@
 #  A tiny dependency injector
 
-__Less Is More__
-
-Easy to use java dependecy injection, to help you quickly organize your components instances
+Easy to use android dependency injection, to help you quickly organize your singletons, components ...
 <br>
 
 No annotation, not intrusive, no bullshit, just simple piece of java ... You are free to use it where you want !
@@ -17,14 +15,14 @@ Injector.add(felix);
 
 The `Injector.add()` operator add/replace a component, thanks to it class 
 
-## Retrieve it from anywhere
+## Retrieve it
 Get your object back by asking the `Injector.get()` operator, with the given object class:
 
 ```java
 Cat felix = Injector.get(Cat.class)
 ```
 
-## Make a module
+## Make a module, for gathering components
 You can gather object definitions in `module`. Extends the fr.ekito.injector.Module class, implements the `load` method.<br/>
 
 ```java
@@ -56,7 +54,7 @@ Injector.load(PetsModule.class)
 Now you can get any object where you want !
  
 
-## Reuse/import modules
+## Reuse modules
 You can reuse any existing module with the `extend` operator, in your module. 
 
 ```java
@@ -78,9 +76,9 @@ Injector.add(felix,Cat.class);
 Cat felix = Injector.get(Cat.class)
 ```
 
-# In Android
+# In your android app
 
-## begin at Application
+## start it at Application level
 
 The best way to load module is from your `Application` component :
 
@@ -98,7 +96,6 @@ public class MainApplication extends Application {
 ```
 
 But use it, where you want !
-
 
 ## get it there ... 
 
@@ -118,9 +115,28 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 
-# in Kotlin
+# Also easy to use in Kotlin
 
 You can also use it with kotlin. Beware to use java classes :  
+
+```kotlin
+class WebModule : Module() {
+    override fun load() {
+        val httpClient = httpClient()
+
+        provide(httpClient, OkHttpClient::class.java)
+        provide(githubWS(httpClient), GitHubService::class.java)
+    }
+
+    private fun httpClient(): OkHttpClient {
+        ...
+    }
+
+    private fun githubWS(httpClient: OkHttpClient): GitHubService {
+        ...
+    }
+}
+```
 
 ```kotlin
 // use web java module
@@ -129,4 +145,6 @@ val service = Injector.get(GitHubService::class.java)
 val response = service.listRepos("octocat").execute()
 ```
 
-__That's it !__
+<br/>
+<br/>
+# That's it !
