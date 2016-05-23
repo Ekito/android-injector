@@ -1,21 +1,26 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+version = "1.0.0"
+group = "si.virag"
+
+def siteUrl = 'https://github.com/izacus/FuzzyDateFormatter'
+def gitUrl = 'https://github.com/izacus/FuzzyDateFormatter.git'
 
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
+    resourcePrefix "fuzzydatetime__"
 
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 10000
+        versionName version
     }
     buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
     }
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -32,13 +37,13 @@ dependencies {
     testCompile 'com.squareup.retrofit2:retrofit:2.0.2'
     testCompile 'com.squareup.okhttp3:logging-interceptor:3.0.1'
     testCompile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
-    testCompile 'com.google.code.gson:gson:2.3.1'
+    testCompile 'com.google.code.gson:gson:2.4'
 
-    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:appcompat-v7:23.4.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 buildscript {
-    ext.kotlin_version = '1.0.1-2'
+    ext.kotlin_version = '1.0.2'
     repositories {
         mavenCentral()
     }
@@ -48,4 +53,77 @@ buildscript {
 }
 repositories {
     mavenCentral()
+}
+
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = "FuzzyDateFormatter"
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
+}
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                name 'A simple formatter library which formats dates in a fuzzy form for display in apps. '
+                url siteUrl
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'izacus'
+                        name 'Jernej Virag'
+                        email 'jernej@virag.si'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+
+                }
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+task findConventions << {
+    println project.getConvention()
 }

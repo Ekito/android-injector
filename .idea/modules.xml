@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Injector.iml" filepath="$PROJECT_DIR$/Injector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-injector.iml" filepath="$PROJECT_DIR$/android-injector.iml" />
       <module fileurl="file://$PROJECT_DIR$/demoapp/demoapp.iml" filepath="$PROJECT_DIR$/demoapp/demoapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/injector/injector.iml" filepath="$PROJECT_DIR$/injector/injector.iml" />
       <module fileurl="file://$PROJECT_DIR$/kotlindemoapp/kotlindemoapp.iml" filepath="$PROJECT_DIR$/kotlindemoapp/kotlindemoapp.iml" />
