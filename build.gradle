@@ -18,6 +18,18 @@ allprojects {
     repositories {
         jcenter()
     }
+    ext {
+        version_name = "1.0.0"
+        version_code = 10000 //
+        build_tools_version = "23.0.3"
+        version_compile = 23
+        version_minimum = 16
+        version_target = 23
+        kotlin_version  = '1.0.2'
+        group = "android-injector"
+        siteUrl = 'https://github.com/arnaudgiuliani/android-injector'
+        gitUrl = 'https://github.com/arnaudgiuliani/android-injector.git'
+    }
 }
 
 task clean(type: Delete) {

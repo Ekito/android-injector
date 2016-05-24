@@ -3,21 +3,18 @@ apply plugin: 'kotlin-android'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "1.0.0"
-group = "si.virag"
-
-def siteUrl = 'https://github.com/izacus/FuzzyDateFormatter'
-def gitUrl = 'https://github.com/izacus/FuzzyDateFormatter.git'
+version = parent.ext.version_name
+group = parent.ext.group
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
-    resourcePrefix "fuzzydatetime__"
+    compileSdkVersion parent.ext.version_compile
+    buildToolsVersion parent.ext.build_tools_version
+    resourcePrefix "injector__"
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 23
-        versionCode 10000
+        minSdkVersion parent.ext.version_minimum
+        targetSdkVersion parent.ext.version_target
+        versionCode parent.ext.version_compile
         versionName version
     }
     buildTypes {
@@ -43,7 +40,7 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 buildscript {
-    ext.kotlin_version = '1.0.2'
+    ext.kotlin_version = parent.ext.kotlin_version
     repositories {
         mavenCentral()
     }
@@ -89,16 +86,15 @@ install {
                 }
                 developers {
                     developer {
-                        id 'izacus'
-                        name 'Jernej Virag'
-                        email 'jernej@virag.si'
+                        id 'arnaudgiuliani'
+                        name 'Arnaud Giuliani'
+                        email 'agiuliani@ekito.fr'
                     }
                 }
                 scm {
                     connection gitUrl
                     developerConnection gitUrl
                     url siteUrl
-
                 }
             }
         }

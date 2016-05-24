@@ -1,5 +1,6 @@
 *.iml
 .idea/
+local.properties
 
 # Built application files
 *.apk

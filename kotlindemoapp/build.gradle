@@ -2,15 +2,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion parent.ext.version_compile
+    buildToolsVersion parent.ext.build_tools_version
 
     defaultConfig {
         applicationId "fr.ekito.injector.kotlinapp"
-        minSdkVersion 16
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion parent.ext.version_minimum
+        targetSdkVersion parent.ext.version_target
+        versionCode parent.ext.version_compile
+        versionName version
     }
     buildTypes {
         release {
