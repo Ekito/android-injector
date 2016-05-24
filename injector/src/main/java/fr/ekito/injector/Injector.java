@@ -1,8 +1,5 @@
 package fr.ekito.injector;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,9 +19,9 @@ public class Injector {
      * @param clazz component Class
      * @param <T>   Type
      * @return
-     * @throw IllegalStateException if not present
+     *
+     * IllegalStateException if not present
      */
-    @NonNull
     public static <T> T get(Class<T> clazz) {
         Object o = instances.get(clazz);
         if (o == null)
@@ -41,14 +38,13 @@ public class Injector {
      * @param <T>   Type
      * @return Component if present
      */
-    @Nullable
     public static <T> T getOrNull(Class<T> clazz) {
         T t = (T) instances.get(clazz);
 
         if (t != null)
             Log.v(TAG, "getOrNull " + clazz.getSimpleName() + " :: " + t);
         else
-            Log.v(TAG,"no instance for class:"+clazz);
+            Log.v(TAG, "no instance for class:" + clazz);
         return t;
     }
 
@@ -71,7 +67,7 @@ public class Injector {
      * @param clazz
      */
     public static void add(Object o, Class clazz) {
-        Log.v(TAG, "Add/Replace instance:"+o+" class:"+clazz.getSimpleName());
+        Log.v(TAG, "Add/Replace instance:" + o + " class:" + clazz.getSimpleName());
         Object existingInstance = getOrNull(clazz);
         if (existingInstance != null) {
             remove(clazz);
@@ -107,11 +103,10 @@ public class Injector {
     /**
      * add components from Module definition
      *
-     * @param module      Module
-     *
+     * @param module Module
      */
     public static void load(Class<? extends Module> module) {
-        load(module,false);
+        load(module, false);
     }
 
     /**
@@ -126,7 +121,6 @@ public class Injector {
 
     /**
      * remove an instance, from object's class
-     *
      */
     public static void remove(Object o) {
         String simpleName = o.getClass().getSimpleName();

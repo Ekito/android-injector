@@ -13,7 +13,7 @@ public abstract class Module {
 
     /**
      * extend to other module definition
-     * @param modules
+     * @param modules - module list
      */
     public void extend(Class<? extends Module>... modules) {
         for (Class<? extends Module> m : modules) {
@@ -23,8 +23,8 @@ public abstract class Module {
 
     /**
      * provide an object instance, with its Class definition
-     * @param instance
-     * @param clazz
+     * @param instance - object instance
+     * @param clazz - object class
      */
     public void provide(Object instance, Class clazz){
         Injector.add(instance,clazz);
@@ -32,7 +32,7 @@ public abstract class Module {
 
     /**
      * provide an object instance
-     * @param instance
+     * @param instance - object instance
      */
     public void provide(Object instance){
         Injector.add(instance);
