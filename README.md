@@ -5,6 +5,20 @@ Easy to use android dependency injection, to help you quickly organize your sing
 
 No annotation, not intrusive, no bullshit, just simple piece of java ... You are free to use it where you want !
 
+## Get it with gradle
+
+```gradle
+repositories {
+    maven {
+        url  "http://dl.bintray.com/arnaudgiuliani/maven" 
+    }
+}
+
+
+compile 'android-injector:injector:1.0.0'
+```
+
+
 ## Add a component
 Just declare a component in the injector to inject it later
 
