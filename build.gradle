@@ -27,8 +27,8 @@ allprojects {
         version_target = 23
         kotlin_version  = '1.0.2'
         group = "android-injector"
-        siteUrl = 'https://github.com/arnaudgiuliani/android-injector'
-        gitUrl = 'https://github.com/arnaudgiuliani/android-injector.git'
+        siteUrl = 'https://github.com/Ekito/android-injector'
+        gitUrl = 'https://github.com/Ekito/android-injector.git'
     }
 }
 
