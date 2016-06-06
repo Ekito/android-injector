@@ -9,9 +9,7 @@ No annotation, not intrusive, no bullshit, just simple piece of java ... You are
 
 ```gradle
 repositories {
-    maven {
-        url  "http://dl.bintray.com/arnaudgiuliani/maven" 
-    }
+    jcenter()
 }
 
 
